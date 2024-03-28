@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@CrossOrigin(origins = {"http://localhost:3000", "http://fast-pupils.gl.at.ply.gg:12088/"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://fast-pupils.gl.at.ply.gg:12088"})
 @RestController
 public class MainController {
 
