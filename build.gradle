@@ -11,6 +11,9 @@ java {
 	sourceCompatibility = '17'
 }
 
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
