@@ -94,10 +94,12 @@ public class MainController {
     }
 
     @PostMapping("api/chatMessage")
-    public void setChatMessage(@RequestParam String message) {
+    public String setChatMessage(@RequestParam String message) {
         chatMessage.get(0).put("message", message);
 
         messagingTemplate.convertAndSend("/topic/chatMessage", message);
+
+        return message;
     }
 
 }
