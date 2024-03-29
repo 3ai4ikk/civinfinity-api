@@ -2,7 +2,6 @@ package ua.zai4ik.restFirst.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -95,12 +94,10 @@ public class MainController {
     }
 
     @PostMapping("api/chatMessage")
-    public ResponseEntity<String> setChatMessage(@RequestParam String message) {
+    public void setChatMessage(@RequestParam String message) {
         chatMessage.get(0).put("message", message);
 
         messagingTemplate.convertAndSend("/topic/chatMessage", message);
-
-        return ResponseEntity.ok("Message received: " + message);
     }
 
 }
