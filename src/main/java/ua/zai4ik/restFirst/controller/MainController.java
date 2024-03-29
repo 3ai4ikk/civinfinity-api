@@ -27,6 +27,12 @@ public class MainController {
         }});
     }};
 
+    ArrayList<HashMap<String, String>> chatMessage = new ArrayList<>() {{
+        add(new HashMap<>() {{
+            put("message", "Hello, world!");
+        }});
+    }};
+
 //    @SendTo("/topic/online")
     @GetMapping("/api/online")
     public HashMap<String, Integer> getOnline() {
@@ -85,6 +91,13 @@ public class MainController {
         chat.add(hashMap);
 
         messagingTemplate.convertAndSend("/topic/chat", chat);
+    }
+
+    @PostMapping("api/chatMessage")
+    public void setChatMessage(@RequestParam String message) {
+        chatMessage.get(0).put("message", message);
+
+        messagingTemplate.convertAndSend("/topic/chatMessage", message);
     }
 
 }
